@@ -15,3 +15,4 @@ Links
 * [Logging into Elasticsearch using Serilog and viewing logs in Kibana | .NET Core Tutorial](https://www.youtube.com/watch?v=0acSdHJfk64&t=660s)
 * [Iniciando com Elastic Stack (Elastic search, Kibana, Logstash e Beats)](https://www.youtube.com/watch?v=Bb3g8xk0Cys&t=2680s)
 * [Net Core + Serilog + ElasticSearch + Kibana](https://medium.com/@matias.paulo84/net-core-serilog-elasticsearch-kibana-3bd080ff4c1e)
+* [Logs e Observabilidade com Elastic Stack (Elasticsearch + Kibana + Beats)](https://www.youtube.com/watch?v=x0Re4F9YNGo)
