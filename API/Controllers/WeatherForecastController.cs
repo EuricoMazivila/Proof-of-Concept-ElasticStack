@@ -21,18 +21,8 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
-        var x = 2;
-        try
-        {
-            x /= 0;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError($"Test Serilog and Elastic Stack: {ex}", ex);
-        }
-        
-        Console.WriteLine(x);
-        
+        _logger.LogInformation($"Test Serilog and Elastic Stack");
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -40,5 +30,32 @@ public class WeatherForecastController : ControllerBase
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+    }
+
+    [HttpPost]
+    public IActionResult Post([FromBody] WeatherForecast? weatherForecast)
+    {
+        if (weatherForecast?.Date < DateTime.Now)
+        {
+            _logger.LogWarning("Weather Forecast it's null");
+        }
+        
+        return Ok(weatherForecast);
+    }
+    
+    [HttpPut]
+    public IActionResult Put([FromBody] WeatherForecast? weatherForecast)
+    {
+        try
+        {
+            if (weatherForecast?.Date < DateTime.Now)
+                throw new Exception("Weather Forecast it's null");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Log error: {e}",ex.Message);
+        }
+        
+        return Ok(weatherForecast);
     }
 }
